@@ -4,7 +4,7 @@ import './App.css';
 import Test from './components/Test';
 
 function App() {
-	return <Test />;
+	return <div>Here is the app</div>;
 }
 
 export default App;
