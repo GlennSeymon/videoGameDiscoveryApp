@@ -22,7 +22,7 @@ function App() {
 				<div>Side Panel</div>
 			</SidePanel>
 
-			<Grid size={{ xs: 12, sm: 10 }} sx={{ backgroundColor: 'dodgerblue' }}>
+			<Grid size={{ xs: 12, sm: 10 }}>
 				<GameGrid />
 			</Grid>
 		</Grid>

@@ -8,6 +8,7 @@ export interface Game {
 	name: string;
 	description: string;
 	rating: number;
+	background_image: string;
 }
 
 interface FetchGamesResponse {
