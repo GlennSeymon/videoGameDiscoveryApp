@@ -7,12 +7,13 @@ import {
 	styled,
 	Typography,
 } from '@mui/material';
+import PlatformIconList from './PlatformIconList';
 
 interface Props {
 	game: Game;
 }
 
-const StyledCardContent = styled(CardMedia)({
+const StyledCardContent = styled(CardContent)({
 	padding: 0,
 	height: '10rem',
 });
@@ -32,6 +33,9 @@ const GameCard = ({ game }: Props) => {
 				<Typography variant='h6' component='h2'>
 					{game.name}
 				</Typography>
+				<PlatformIconList
+					platforms={game.parent_platforms.map((p) => p.platform)}
+				/>
 				<Typography>{game.description}</Typography>
 			</StyledCardContent>
 		</Card>
