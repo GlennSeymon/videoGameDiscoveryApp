@@ -1,6 +1,7 @@
 import './App.css';
 import { Grid, styled } from '@mui/material';
 import NavBar from './components/NavBar';
+import GameGrid from './components/GameGrid';
 
 const SidePanel = styled(Grid)(({ theme }) => ({
 	backgroundColor: 'gold',
@@ -22,7 +23,7 @@ function App() {
 			</SidePanel>
 
 			<Grid size={{ xs: 12, sm: 10 }} sx={{ backgroundColor: 'dodgerblue' }}>
-				<div>Main Panel</div>
+				<GameGrid />
 			</Grid>
 		</Grid>
 	);
