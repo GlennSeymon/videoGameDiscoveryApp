@@ -8,6 +8,7 @@ import {
 	Typography,
 } from '@mui/material';
 import PlatformIconList from './PlatformIconList';
+import CriticScore from './CriticScore';
 
 interface Props {
 	game: Game;
@@ -15,11 +16,12 @@ interface Props {
 
 const StyledCardContent = styled(CardContent)({
 	padding: 0,
-	height: '10rem',
+	height: '15rem',
 });
 
 const StyledCardMedia = styled(CardMedia)({
-	height: '80px',
+	height: '50%',
+	width: '100%',
 });
 
 const GameCard = ({ game }: Props) => {
@@ -37,6 +39,7 @@ const GameCard = ({ game }: Props) => {
 					platforms={game.parent_platforms.map((p) => p.platform)}
 				/>
 				<Typography>{game.description}</Typography>
+				<CriticScore score={game.metacritic} />
 			</StyledCardContent>
 		</Card>
 	);

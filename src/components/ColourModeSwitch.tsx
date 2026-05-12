@@ -8,7 +8,7 @@ const ColourModeSwitch = () => {
 	return (
 		<Stack direction={'row'} spacing={2}>
 			<Switch onChange={toggleColorMode} />
-			<Typography>Dark Mode</Typography>
+			<Typography>Light Mode</Typography>
 		</Stack>
 	);
 };
