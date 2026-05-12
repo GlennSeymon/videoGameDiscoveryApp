@@ -1,5 +1,6 @@
 import './App.css';
-import { Box, Grid, styled } from '@mui/material';
+import { Grid, styled } from '@mui/material';
+import NavBar from './components/NavBar';
 
 const SidePanel = styled(Grid)(({ theme }) => ({
 	backgroundColor: 'gold',
@@ -11,9 +12,9 @@ const SidePanel = styled(Grid)(({ theme }) => ({
 
 function App() {
 	return (
-		<Grid container spacing={2}>
-			<Grid size={{ xs: 12 }} sx={{ backgroundColor: 'coral' }}>
-				<div>NavBar</div>
+		<Grid container spacing={0}>
+			<Grid size={{ xs: 12 }}>
+				<NavBar />
 			</Grid>
 
 			<SidePanel size={{ md: 2 }}>
