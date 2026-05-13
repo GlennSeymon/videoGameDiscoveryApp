@@ -1,23 +1,16 @@
-import { Card, CardContent, Skeleton, styled } from '@mui/material';
-
-const StyledCardContent = styled(CardContent)({
-	padding: 0,
-	height: '15rem',
-});
+import { Skeleton, styled } from '@mui/material';
+import GameCardContainer from './GameCardContainer';
 
 const StyledSkeleton = styled(Skeleton)({
 	height: '70%',
 	width: '100%',
-	backgroundPosition: 'top',
 });
 
 const GameCardSkeleton = () => {
 	return (
-		<Card>
-			<StyledCardContent>
-				<StyledSkeleton variant='rectangular'></StyledSkeleton>
-			</StyledCardContent>
-		</Card>
+		<GameCardContainer>
+			<StyledSkeleton variant='rectangular'></StyledSkeleton>
+		</GameCardContainer>
 	);
 };
 

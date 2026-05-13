@@ -1,8 +1,7 @@
-import { Alert, CircularProgress, Grid, styled } from '@mui/material';
+import { Alert, Grid, styled } from '@mui/material';
 import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
-import { BsSkipEnd } from 'react-icons/bs';
 
 const StyledGridContainer = styled(Grid)({
 	padding: '1em',
