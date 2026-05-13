@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import PlatformIconList from './PlatformIconList';
 import CriticScore from './CriticScore';
+import getCroppedImageUrl from '../services/image-url';
 
 interface Props {
 	game: Game;
@@ -22,16 +23,14 @@ const StyledCardContent = styled(CardContent)({
 const StyledCardMedia = styled(CardMedia)({
 	height: '50%',
 	width: '100%',
+	backgroundPosition: 'top',
 });
 
 const GameCard = ({ game }: Props) => {
 	return (
 		<Card>
 			<StyledCardContent>
-				<StyledCardMedia
-					image={game.background_image}
-					src={game.background_image}
-				/>
+				<StyledCardMedia image={getCroppedImageUrl(game.background_image)} />
 				<Typography variant='h6' component='h2'>
 					{game.name}
 				</Typography>
