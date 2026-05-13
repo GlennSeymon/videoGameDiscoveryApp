@@ -5,6 +5,7 @@ import GameGrid from './components/GameGrid';
 import GenreList from './components/GenreList';
 import { Genre } from './hooks/useGenres';
 import { useState } from 'react';
+import PlatformSelector from './components/PlatformSelector';
 
 const SidePanel = styled(Grid)(({ theme }) => ({
 	display: 'none',
@@ -14,6 +15,10 @@ const SidePanel = styled(Grid)(({ theme }) => ({
 	paddingLeft: theme.spacing(1),
 }));
 
+const StyledGridContainer = styled(Grid)({
+	textAlign: 'left',
+});
+
 function App() {
 	const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
@@ -22,7 +27,7 @@ function App() {
 	};
 
 	return (
-		<Grid container spacing={0}>
+		<StyledGridContainer container spacing={0}>
 			<Grid size={{ xs: 12 }}>
 				<NavBar />
 			</Grid>
@@ -35,9 +40,10 @@ function App() {
 			</SidePanel>
 
 			<Grid size={{ xs: 12, sm: 10 }}>
+				<PlatformSelector />
 				<GameGrid selectedGenre={selectedGenre} />
 			</Grid>
-		</Grid>
+		</StyledGridContainer>
 	);
 }
 
