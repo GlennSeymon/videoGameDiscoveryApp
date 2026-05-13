@@ -3,10 +3,6 @@ import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 
-const StyledGridContainer = styled(Grid)({
-	padding: '1em',
-});
-
 const GameGrid = () => {
 	const { data, error, isLoading } = useGames();
 	const skeletons = [1, 2, 3, 4, 5, 6];
@@ -15,7 +11,7 @@ const GameGrid = () => {
 		<>
 			{error && <Alert severity='error'>{error.message}</Alert>}
 
-			<StyledGridContainer container spacing={2}>
+			<Grid container spacing={2}>
 				{isLoading &&
 					skeletons.map((skeleton) => (
 						<Grid key={skeleton} size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }}>
@@ -27,7 +23,7 @@ const GameGrid = () => {
 						<GameCard game={game} />
 					</Grid>
 				))}
-			</StyledGridContainer>
+			</Grid>
 		</>
 	);
 };

@@ -9,6 +9,7 @@ const SidePanel = styled(Grid)(({ theme }) => ({
 	[theme.breakpoints.up('sm')]: {
 		display: 'block',
 	},
+	paddingLeft: theme.spacing(1),
 }));
 
 function App() {
