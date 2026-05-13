@@ -13,7 +13,7 @@ const GameGrid = () => {
 
 	return (
 		<>
-			{error && <Alert severity='error'>{error?.message}</Alert>}
+			{error && <Alert severity='error'>{error.message}</Alert>}
 
 			<StyledGridContainer container spacing={2}>
 				{isLoading &&

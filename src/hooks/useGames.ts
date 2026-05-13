@@ -42,7 +42,7 @@ const useGames = () => {
 			})
 			.catch((err) => {
 				if (err instanceof CanceledError) return;
-				setError(err.message);
+				setError(err);
 				setIsLoading(false);
 			});
 

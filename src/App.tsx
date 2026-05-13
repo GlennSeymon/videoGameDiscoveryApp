@@ -2,9 +2,9 @@ import './App.css';
 import { Grid, styled } from '@mui/material';
 import NavBar from './components/NavBar';
 import GameGrid from './components/GameGrid';
+import GenreList from './components/GenreList';
 
 const SidePanel = styled(Grid)(({ theme }) => ({
-	backgroundColor: 'gold',
 	display: 'none',
 	[theme.breakpoints.up('sm')]: {
 		display: 'block',
@@ -19,7 +19,7 @@ function App() {
 			</Grid>
 
 			<SidePanel size={{ md: 2 }}>
-				<div>Side Panel</div>
+				<GenreList />
 			</SidePanel>
 
 			<Grid size={{ xs: 12, sm: 10 }}>
