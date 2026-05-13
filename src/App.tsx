@@ -1,5 +1,5 @@
 import './App.css';
-import { Grid, styled } from '@mui/material';
+import { Grid, Stack, styled } from '@mui/material';
 import NavBar from './components/NavBar';
 import GameGrid from './components/GameGrid';
 import GenreList from './components/GenreList';
@@ -7,6 +7,7 @@ import { Genre } from './hooks/useGenres';
 import { useState } from 'react';
 import PlatformSelector from './components/PlatformSelector';
 import { Platform } from './hooks/usePlatforms';
+import SortSelector from './components/SortSelector';
 
 export interface GameQuery {
 	genre: Genre | null;
@@ -24,6 +25,10 @@ const SidePanel = styled(Grid)(({ theme }) => ({
 const StyledGridContainer = styled(Grid)({
 	textAlign: 'left',
 });
+
+const StyledStack = styled(Stack)(({ theme }) => ({
+	marginBottom: theme.spacing(5),
+}));
 
 function App() {
 	const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
@@ -50,9 +55,12 @@ function App() {
 			</SidePanel>
 
 			<Grid size={{ xs: 12, sm: 10 }}>
-				<PlatformSelector
-					onSelectPlatform={(platform) => handlePlatformSelect(platform)}
-				/>
+				<StyledStack direction='row' spacing={2}>
+					<PlatformSelector
+						onSelectPlatform={(platform) => handlePlatformSelect(platform)}
+					/>
+					<SortSelector />
+				</StyledStack>
 				<GameGrid gameQuery={gameQuery} />
 			</Grid>
 		</StyledGridContainer>
