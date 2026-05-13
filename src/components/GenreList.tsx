@@ -1,12 +1,13 @@
 import {
 	Alert,
 	CircularProgress,
+	Link,
 	List,
 	ListItem,
 	styled,
 	Typography,
 } from '@mui/material';
-import useGenres from '../hooks/useGenres';
+import useGenres, { Genre } from '../hooks/useGenres';
 import getCroppedImageUrl from '../services/image-url';
 
 const StyledImage = styled('img')(({ theme }) => ({
@@ -20,7 +21,11 @@ const StyledListItem = styled(ListItem)({
 	padding: 0,
 });
 
-const GenreList = () => {
+interface Props {
+	onClickGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onClickGenre }: Props) => {
 	const { data, error, isLoading } = useGenres();
 
 	return (
@@ -32,7 +37,7 @@ const GenreList = () => {
 				<List>
 					<StyledListItem key={genre.id}>
 						<StyledImage src={getCroppedImageUrl(genre.image_background)} />
-						<Typography>{genre.name}</Typography>
+						<Link onClick={() => onClickGenre(genre)}>{genre.name}</Link>
 					</StyledListItem>
 				</List>
 			))}
