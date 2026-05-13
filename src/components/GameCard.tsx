@@ -21,7 +21,7 @@ const StyledCardContent = styled(CardContent)({
 });
 
 const StyledCardMedia = styled(CardMedia)({
-	height: '50%',
+	height: '70%',
 	width: '100%',
 	backgroundPosition: 'top',
 });
