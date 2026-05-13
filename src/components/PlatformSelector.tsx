@@ -1,4 +1,4 @@
-import usePlatforms from '../hooks/usePlatforms';
+import usePlatforms, { Platform } from '../hooks/usePlatforms';
 import {
 	Alert,
 	CircularProgress,
@@ -8,7 +8,12 @@ import {
 	Select,
 } from '@mui/material';
 
-const PlatformSelector = () => {
+interface Props {
+	onSelectPlatform: (platform: Platform) => void;
+	selectedPlatform?: Platform | null;
+}
+
+const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
 	const { data, error, isLoading } = usePlatforms();
 
 	return (
@@ -19,11 +24,21 @@ const PlatformSelector = () => {
 			<FormControl sx={{ width: '30%' }}>
 				<InputLabel id='platformLabel'>Platform</InputLabel>
 				<Select labelId='platformLabel' label='Platform'>
-					<MenuItem key='all' value='all'>
+					<MenuItem
+						key='all'
+						value='all'
+						selected={!selectedPlatform}
+						onClick={() => onSelectPlatform(null as unknown as Platform)}
+					>
 						All
 					</MenuItem>
 					{data.map((platform) => (
-						<MenuItem key={platform.id} value={platform.name}>
+						<MenuItem
+							key={platform.id}
+							value={platform.name}
+							selected={platform.id === selectedPlatform?.id}
+							onClick={() => onSelectPlatform(platform)}
+						>
 							{platform.name}
 						</MenuItem>
 					))}

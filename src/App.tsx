@@ -6,6 +6,7 @@ import GenreList from './components/GenreList';
 import { Genre } from './hooks/useGenres';
 import { useState } from 'react';
 import PlatformSelector from './components/PlatformSelector';
+import { Platform } from './hooks/useGames';
 
 const SidePanel = styled(Grid)(({ theme }) => ({
 	display: 'none',
@@ -21,9 +22,16 @@ const StyledGridContainer = styled(Grid)({
 
 function App() {
 	const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+	const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+		null,
+	);
 
 	const handleGenreClick = (genre: Genre): void => {
 		setSelectedGenre(genre);
+	};
+
+	const handlePlatformSelect = (platform: Platform): void => {
+		setSelectedPlatform(platform);
 	};
 
 	return (
@@ -40,8 +48,13 @@ function App() {
 			</SidePanel>
 
 			<Grid size={{ xs: 12, sm: 10 }}>
-				<PlatformSelector />
-				<GameGrid selectedGenre={selectedGenre} />
+				<PlatformSelector
+					onSelectPlatform={(platform) => handlePlatformSelect(platform)}
+				/>
+				<GameGrid
+					selectedGenre={selectedGenre}
+					selectedPlatform={selectedPlatform}
+				/>
 			</Grid>
 		</StyledGridContainer>
 	);
