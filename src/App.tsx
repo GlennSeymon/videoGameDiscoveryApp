@@ -6,7 +6,12 @@ import GenreList from './components/GenreList';
 import { Genre } from './hooks/useGenres';
 import { useState } from 'react';
 import PlatformSelector from './components/PlatformSelector';
-import { Platform } from './hooks/useGames';
+import { Platform } from './hooks/usePlatforms';
+
+export interface GameQuery {
+	genre: Genre | null;
+	platform: Platform | null;
+}
 
 const SidePanel = styled(Grid)(({ theme }) => ({
 	display: 'none',
@@ -21,17 +26,14 @@ const StyledGridContainer = styled(Grid)({
 });
 
 function App() {
-	const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-	const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-		null,
-	);
+	const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
 	const handleGenreClick = (genre: Genre): void => {
-		setSelectedGenre(genre);
+		setGameQuery({ ...gameQuery, genre });
 	};
 
 	const handlePlatformSelect = (platform: Platform): void => {
-		setSelectedPlatform(platform);
+		setGameQuery({ ...gameQuery, platform });
 	};
 
 	return (
@@ -43,7 +45,7 @@ function App() {
 			<SidePanel size={{ md: 2 }}>
 				<GenreList
 					onClickGenre={(genre) => handleGenreClick(genre)}
-					selectedGenre={selectedGenre}
+					selectedGenre={gameQuery.genre}
 				/>
 			</SidePanel>
 
@@ -51,10 +53,7 @@ function App() {
 				<PlatformSelector
 					onSelectPlatform={(platform) => handlePlatformSelect(platform)}
 				/>
-				<GameGrid
-					selectedGenre={selectedGenre}
-					selectedPlatform={selectedPlatform}
-				/>
+				<GameGrid gameQuery={gameQuery} />
 			</Grid>
 		</StyledGridContainer>
 	);
