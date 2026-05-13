@@ -21,11 +21,20 @@ const StyledListItem = styled(ListItem)({
 	padding: 0,
 });
 
-interface Props {
-	onClickGenre: (genre: Genre) => void;
+interface StyledLinkProps {
+	isSelected: boolean;
 }
 
-const GenreList = ({ onClickGenre }: Props) => {
+const StyledLink = styled(Link)<StyledLinkProps>(({ isSelected }) => ({
+	fontWeight: isSelected ? 'bold' : 'normal',
+}));
+
+interface Props {
+	onClickGenre: (genre: Genre) => void;
+	selectedGenre: Genre | null;
+}
+
+const GenreList = ({ onClickGenre, selectedGenre }: Props) => {
 	const { data, error, isLoading } = useGenres();
 
 	return (
@@ -37,7 +46,12 @@ const GenreList = ({ onClickGenre }: Props) => {
 				<List>
 					<StyledListItem key={genre.id}>
 						<StyledImage src={getCroppedImageUrl(genre.image_background)} />
-						<Link onClick={() => onClickGenre(genre)}>{genre.name}</Link>
+						<StyledLink
+							onClick={() => onClickGenre(genre)}
+							isSelected={genre.id === selectedGenre?.id}
+						>
+							{genre.name}
+						</StyledLink>
 					</StyledListItem>
 				</List>
 			))}

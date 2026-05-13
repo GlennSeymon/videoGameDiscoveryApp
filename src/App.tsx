@@ -28,7 +28,10 @@ function App() {
 			</Grid>
 
 			<SidePanel size={{ md: 2 }}>
-				<GenreList onClickGenre={(genre) => handleGenreClick(genre)} />
+				<GenreList
+					onClickGenre={(genre) => handleGenreClick(genre)}
+					selectedGenre={selectedGenre}
+				/>
 			</SidePanel>
 
 			<Grid size={{ xs: 12, sm: 10 }}>
