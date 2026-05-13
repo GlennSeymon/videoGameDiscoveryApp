@@ -8,7 +8,7 @@ const StyledGridContainer = styled(Grid)({
 });
 
 const GameGrid = () => {
-	const { games, error, isLoading } = useGames();
+	const { data, error, isLoading } = useGames();
 	const skeletons = [1, 2, 3, 4, 5, 6];
 
 	return (
@@ -22,7 +22,7 @@ const GameGrid = () => {
 							<GameCardSkeleton />
 						</Grid>
 					))}
-				{games.map((game) => (
+				{data.map((game) => (
 					<Grid key={game.id} size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }}>
 						<GameCard game={game} />
 					</Grid>
