@@ -1,4 +1,5 @@
 import { InputAdornment, styled, TextField } from '@mui/material';
+import React from 'react';
 import { useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
 
@@ -32,7 +33,7 @@ const SearchInput = ({ onSearch }: Props) => {
 					input: {
 						startAdornment: (
 							<InputAdornment position='start'>
-								<BsSearch />
+								{React.createElement(BsSearch)}
 							</InputAdornment>
 						),
 					},

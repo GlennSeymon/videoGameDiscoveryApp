@@ -8,6 +8,7 @@ export interface Genre {
 	description: string;
 }
 
-const useGenres = () => useData<Genre>('/genres');
+const useGenres = () =>
+	useData<Genre>('/genres', { params: { ordering: 'name' } });
 
 export default useGenres;

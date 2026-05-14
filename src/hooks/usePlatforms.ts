@@ -8,6 +8,9 @@ export interface Platform {
 	image: string;
 }
 
-const usePlatforms = () => useData<Platform>('/platforms/lists/parents');
+const usePlatforms = () =>
+	useData<Platform>('/platforms/lists/parents', {
+		params: { ordering: 'name' },
+	});
 
 export default usePlatforms;
