@@ -8,6 +8,7 @@ import { useState } from 'react';
 import PlatformSelector from './components/PlatformSelector';
 import { Platform } from './hooks/usePlatforms';
 import OrderingSelector from './components/OrderingSelector';
+import GameHeading from './components/GameHeading';
 
 export interface GameQuery {
 	genre: Genre | null;
@@ -65,6 +66,7 @@ function App() {
 			</SidePanel>
 
 			<Grid size={{ xs: 12, sm: 10 }}>
+				<GameHeading gameQuery={gameQuery} />
 				<StyledStack direction='row' spacing={2}>
 					<PlatformSelector
 						selectedPlatform={gameQuery.platform}
