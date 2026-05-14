@@ -11,6 +11,13 @@ A demo web application that helps users discover new video games based on their 
 - Dark/Light mode theme
 - Dynamic data and images using API from https://rawg.io/
 
+## Technologies Used
+
+- React
+- Node.js
+- MUI
+- RAWG API
+
 ## Installation
 
 1. Clone the repository:
@@ -42,10 +49,3 @@ A demo web application that helps users discover new video games based on their 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Technologies Used
-
-- React
-- Node.js
-- MUI
-- RAWG API
