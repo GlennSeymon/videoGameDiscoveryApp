@@ -1,5 +1,4 @@
-import { Icon, Stack, styled, Typography } from '@mui/material';
-import { Platform } from '../hooks/useGames';
+import { Stack, styled } from '@mui/material';
 import {
 	FaAndroid,
 	FaApple,
@@ -12,6 +11,7 @@ import {
 import { MdPhoneIphone } from 'react-icons/md';
 import { BsGlobe } from 'react-icons/bs';
 import { IconType } from 'react-icons';
+import { Platform } from '../hooks/usePlatforms';
 
 interface Props {
 	platforms: Platform[];

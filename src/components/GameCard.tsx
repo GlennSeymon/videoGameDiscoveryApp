@@ -1,18 +1,10 @@
-import React from 'react';
 import { Game } from '../hooks/useGames';
-import {
-	Box,
-	Card,
-	CardContent,
-	CardMedia,
-	Stack,
-	styled,
-	Typography,
-} from '@mui/material';
+import { Box, CardMedia, Stack, styled, Typography } from '@mui/material';
 import PlatformIconList from './PlatformIconList';
 import CriticScore from './CriticScore';
 import getCroppedImageUrl from '../services/image-url';
 import GameCardContainer from './GameCardContainer';
+import EmojiRating from './EmojiRating';
 
 interface Props {
 	game: Game;
@@ -47,6 +39,7 @@ const GameCard = ({ game }: Props) => {
 				<Typography variant='h6' component='h2'>
 					{game.name}
 				</Typography>
+				<EmojiRating rating={game.rating_top} />
 			</StyledDetails>
 		</GameCardContainer>
 	);

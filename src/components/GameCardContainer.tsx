@@ -7,7 +7,7 @@ interface Props {
 
 const StyledCardContent = styled(CardContent)({
 	padding: 0,
-	height: '15rem',
+	height: '18rem',
 });
 
 const GameCardContainer = ({ children }: Props) => {
