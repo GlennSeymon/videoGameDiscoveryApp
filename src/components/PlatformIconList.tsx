@@ -18,7 +18,8 @@ interface Props {
 }
 
 const StyledIcon = styled('p')(({ theme }) => ({
-	margin: '5px',
+	margin: 0,
+	marginRight: '5px',
 	color: theme.palette.grey[500],
 }));
 

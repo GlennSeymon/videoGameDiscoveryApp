@@ -1,9 +1,11 @@
 import React from 'react';
 import { Game } from '../hooks/useGames';
 import {
+	Box,
 	Card,
 	CardContent,
 	CardMedia,
+	Stack,
 	styled,
 	Typography,
 } from '@mui/material';
@@ -22,18 +24,30 @@ const StyledCardMedia = styled(CardMedia)({
 	backgroundPosition: 'top',
 });
 
+const StyledStack = styled(Stack)({
+	justifyContent: 'space-between',
+});
+
+const StyledDetails = styled(Box)(({ theme }) => ({
+	margin: theme.spacing(1),
+}));
+
 const GameCard = ({ game }: Props) => {
 	return (
 		<GameCardContainer>
 			<StyledCardMedia image={getCroppedImageUrl(game.background_image)} />
-			<Typography variant='h6' component='h2'>
-				{game.name}
-			</Typography>
-			<PlatformIconList
-				platforms={game.parent_platforms.map((p) => p.platform)}
-			/>
-			<Typography>{game.description}</Typography>
-			<CriticScore score={game.metacritic} />
+			<StyledDetails>
+				<StyledStack direction='row'>
+					<PlatformIconList
+						platforms={game.parent_platforms.map((p) => p.platform)}
+					/>
+					<Typography>{game.description}</Typography>
+					<CriticScore score={game.metacritic} />
+				</StyledStack>
+				<Typography variant='h6' component='h2'>
+					{game.name}
+				</Typography>
+			</StyledDetails>
 		</GameCardContainer>
 	);
 };
