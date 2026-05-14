@@ -15,6 +15,7 @@ export const getDesignTokens = (mode: 'light' | 'dark'): ThemeOptions => ({
 		},
 	},
 	typography: {
+		fontSize: 12,
 		fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
 		h1: {
 			fontSize: '2.5rem',
