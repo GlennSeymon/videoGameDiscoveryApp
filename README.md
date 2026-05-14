@@ -5,7 +5,7 @@ A demo web application that helps users discover new video games based on their 
 ## Features
 
 - Search for games by title, genre, or platform
-  = Sort games
+- Sort games
 - View detailed game information including ratings, rating icon and availble platforms.
 - Responsive design for desktop and mobile devices using MUI
 - Dark/Light mode theme
