@@ -40,11 +40,11 @@ interface Props {
 const GenreList = ({ onClickGenre, selectedGenre }: Props) => {
 	const { data, error, isLoading } = useGenres();
 
+	if (error) return <Alert severity='error'>{error.message}</Alert>;
+	if (isLoading) return <CircularProgress />;
+
 	return (
 		<>
-			{error && <Alert severity='error'>{error.message}</Alert>}
-			{isLoading && <CircularProgress />}
-
 			<Typography variant='h6'>Genres</Typography>
 
 			<List>
