@@ -7,11 +7,12 @@ import { Genre } from './hooks/useGenres';
 import { useState } from 'react';
 import PlatformSelector from './components/PlatformSelector';
 import { Platform } from './hooks/usePlatforms';
-import SortSelector from './components/SortSelector';
+import OrderingSelector from './components/OrderingSelector';
 
 export interface GameQuery {
 	genre: Genre | null;
 	platform: Platform | null;
+	ordering: string | null;
 }
 
 const SidePanel = styled(Grid)(({ theme }) => ({
@@ -41,6 +42,10 @@ function App() {
 		setGameQuery({ ...gameQuery, platform });
 	};
 
+	const handleOrdering = (ordering: string): void => {
+		setGameQuery({ ...gameQuery, ordering });
+	};
+
 	return (
 		<StyledGridContainer container spacing={0}>
 			<Grid size={{ xs: 12 }}>
@@ -59,7 +64,10 @@ function App() {
 					<PlatformSelector
 						onSelectPlatform={(platform) => handlePlatformSelect(platform)}
 					/>
-					<SortSelector />
+					<OrderingSelector
+						selectedOrdering={gameQuery.ordering}
+						onClickOrdering={(ordering) => handleOrdering(ordering)}
+					/>
 				</StyledStack>
 				<GameGrid gameQuery={gameQuery} />
 			</Grid>
