@@ -5,6 +5,7 @@ import {
 	List,
 	ListItem,
 	styled,
+	Typography,
 } from '@mui/material';
 import useGenres, { Genre } from '../hooks/useGenres';
 import getCroppedImageUrl from '../services/image-url';
@@ -16,9 +17,10 @@ const StyledImage = styled('img')(({ theme }) => ({
 	borderRadius: theme.spacing(1),
 }));
 
-const StyledListItem = styled(ListItem)({
+const StyledListItem = styled(ListItem)(({ theme }) => ({
 	padding: 0,
-});
+	paddingBottom: theme.spacing(1),
+}));
 
 interface StyledLinkProps {
 	isSelected: boolean;
@@ -43,9 +45,11 @@ const GenreList = ({ onClickGenre, selectedGenre }: Props) => {
 			{error && <Alert severity='error'>{error.message}</Alert>}
 			{isLoading && <CircularProgress />}
 
-			{data.map((genre) => (
-				<List key={genre.id}>
-					<StyledListItem>
+			<Typography variant='h6'>Genres</Typography>
+
+			<List>
+				{data.map((genre) => (
+					<StyledListItem key={genre.id}>
 						<StyledImage src={getCroppedImageUrl(genre.image_background)} />
 						<StyledLink
 							onClick={() => onClickGenre(genre)}
@@ -54,8 +58,8 @@ const GenreList = ({ onClickGenre, selectedGenre }: Props) => {
 							{genre.name}
 						</StyledLink>
 					</StyledListItem>
-				</List>
-			))}
+				))}
+			</List>
 		</>
 	);
 };
