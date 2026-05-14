@@ -23,7 +23,7 @@ A demo web application that helps users discover new video games based on their 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/videoGameDiscoveryApp.git
+   git clone https://github.com/GlennSeymon/videoGameDiscoveryApp.git
    cd videoGameDiscoveryApp
    ```
 
