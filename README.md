@@ -47,5 +47,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - React
 - Node.js
-  = MUI
+- MUI
 - RAWG API
