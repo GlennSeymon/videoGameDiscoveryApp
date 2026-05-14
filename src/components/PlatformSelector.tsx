@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 
 interface Props {
-	onSelectPlatform: (platform: Platform) => void;
+	onSelectPlatform: (platform: Platform | null) => void;
 	selectedPlatform?: Platform | null;
 }
 
@@ -23,11 +23,14 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
 
 			<FormControl sx={{ width: '30%' }}>
 				<InputLabel id='platformLabel'>Platform</InputLabel>
-				<Select labelId='platformLabel' label='Platform'>
+				<Select
+					labelId='platformLabel'
+					label='Platform'
+					value={selectedPlatform?.name ?? ''}
+				>
 					<MenuItem
-						key='all'
-						value='all'
-						selected={!selectedPlatform}
+						key=''
+						value=''
 						onClick={() => onSelectPlatform(null as unknown as Platform)}
 					>
 						All
@@ -36,7 +39,6 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
 						<MenuItem
 							key={platform.id}
 							value={platform.name}
-							selected={platform.id === selectedPlatform?.id}
 							onClick={() => onSelectPlatform(platform)}
 						>
 							{platform.name}

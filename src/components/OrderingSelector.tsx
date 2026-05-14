@@ -17,13 +17,16 @@ const OrderingSelector = ({ onClickOrdering, selectedOrdering }: Props) => {
 	return (
 		<FormControl sx={{ width: '30%' }}>
 			<InputLabel id='orderingTypeLabel'>Sort Type</InputLabel>
-			<Select labelId='orderingTypeLabel' label='Sort Type'>
+			<Select
+				labelId='orderingTypeLabel'
+				label='Sort Type'
+				value={selectedOrdering ?? ''}
+			>
 				{OrderingTypes.map((orderingType) => (
 					<MenuItem
 						onClick={() => onClickOrdering(orderingType.value)}
 						key={orderingType.value}
 						value={orderingType.value}
-						selected={orderingType.value === selectedOrdering}
 					>
 						{orderingType.label}
 					</MenuItem>

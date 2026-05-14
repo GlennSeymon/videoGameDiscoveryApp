@@ -5,7 +5,6 @@ import {
 	List,
 	ListItem,
 	styled,
-	Typography,
 } from '@mui/material';
 import useGenres, { Genre } from '../hooks/useGenres';
 import getCroppedImageUrl from '../services/image-url';
@@ -25,7 +24,9 @@ interface StyledLinkProps {
 	isSelected: boolean;
 }
 
-const StyledLink = styled(Link)<StyledLinkProps>(({ isSelected }) => ({
+const StyledLink = styled(Link, {
+	shouldForwardProp: (prop) => prop !== 'isSelected',
+})<StyledLinkProps>(({ isSelected }) => ({
 	fontWeight: isSelected ? 'bold' : 'normal',
 }));
 
@@ -43,8 +44,8 @@ const GenreList = ({ onClickGenre, selectedGenre }: Props) => {
 			{isLoading && <CircularProgress />}
 
 			{data.map((genre) => (
-				<List>
-					<StyledListItem key={genre.id}>
+				<List key={genre.id}>
+					<StyledListItem>
 						<StyledImage src={getCroppedImageUrl(genre.image_background)} />
 						<StyledLink
 							onClick={() => onClickGenre(genre)}
