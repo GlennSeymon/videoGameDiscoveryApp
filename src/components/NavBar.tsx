@@ -1,21 +1,23 @@
 import { Stack, styled } from '@mui/material';
 import ColourModeSwitch from './ColourModeSwitch';
+import SearchInput from './SearchInput';
 
-const StyledStack = styled(Stack)({
-	justifyContent: 'space-between',
-});
+interface Props {
+	onSearch: (searchValue: string) => void;
+}
 
 const Logo = styled('img')({
 	height: '60px',
 	width: '60px',
 });
 
-const NavBar = () => {
+const NavBar = ({ onSearch }: Props) => {
 	return (
-		<StyledStack direction={'row'} spacing={2}>
+		<Stack direction={'row'} spacing={2}>
 			<Logo src='src/assets/logo.webp' />
+			<SearchInput onSearch={onSearch} />
 			<ColourModeSwitch />
-		</StyledStack>
+		</Stack>
 	);
 };
 

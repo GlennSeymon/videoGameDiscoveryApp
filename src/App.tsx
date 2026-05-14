@@ -13,6 +13,7 @@ export interface GameQuery {
 	genre: Genre | null;
 	platform: Platform | null;
 	ordering: string | null;
+	search: string | null;
 }
 
 const SidePanel = styled(Grid)(({ theme }) => ({
@@ -46,10 +47,14 @@ function App() {
 		setGameQuery({ ...gameQuery, ordering });
 	};
 
+	const handleSearch = (search: string): void => {
+		setGameQuery({ ...gameQuery, search });
+	};
+
 	return (
 		<StyledGridContainer container spacing={0}>
 			<Grid size={{ xs: 12 }}>
-				<NavBar />
+				<NavBar onSearch={handleSearch} />
 			</Grid>
 
 			<SidePanel size={{ md: 2 }}>

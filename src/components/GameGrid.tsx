@@ -2,7 +2,6 @@ import { Alert, Grid, styled } from '@mui/material';
 import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
-import { Platform } from '../hooks/usePlatforms';
 import { GameQuery } from '../App';
 
 interface Props {
