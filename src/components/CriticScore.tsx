@@ -13,7 +13,7 @@ const CriticScore = ({ score }: Props) => {
 	return (
 		<Stack direction={'row'}>
 			<ScoreLabel>Score:</ScoreLabel>
-			<Rating name='criticScore' defaultValue={score} size='small' />
+			<Rating name='criticScore' defaultValue={score} size='small' readOnly />
 		</Stack>
 	);
 };
