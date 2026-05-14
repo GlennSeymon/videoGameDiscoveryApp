@@ -34,7 +34,7 @@ const GameCard = ({ game }: Props) => {
 						platforms={game.parent_platforms.map((p) => p.platform)}
 					/>
 					<Typography>{game.description}</Typography>
-					<CriticScore score={game.metacritic} />
+					<CriticScore score={game.rating_top} />
 				</StyledStack>
 				<Typography variant='h6' component='h2'>
 					{game.name}
