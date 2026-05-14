@@ -38,7 +38,7 @@ function App() {
 		setGameQuery({ ...gameQuery, genre });
 	};
 
-	const handlePlatformSelect = (platform: Platform): void => {
+	const handlePlatformSelect = (platform: Platform | null): void => {
 		setGameQuery({ ...gameQuery, platform });
 	};
 
@@ -62,6 +62,7 @@ function App() {
 			<Grid size={{ xs: 12, sm: 10 }}>
 				<StyledStack direction='row' spacing={2}>
 					<PlatformSelector
+						selectedPlatform={gameQuery.platform}
 						onSelectPlatform={(platform) => handlePlatformSelect(platform)}
 					/>
 					<OrderingSelector

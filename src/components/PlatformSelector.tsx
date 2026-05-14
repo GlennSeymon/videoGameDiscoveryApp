@@ -10,7 +10,7 @@ import {
 
 interface Props {
 	onSelectPlatform: (platform: Platform | null) => void;
-	selectedPlatform?: Platform | null;
+	selectedPlatform: Platform | null;
 }
 
 const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
@@ -28,13 +28,6 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
 					label='Platform'
 					value={selectedPlatform?.name ?? ''}
 				>
-					<MenuItem
-						key=''
-						value=''
-						onClick={() => onSelectPlatform(null as unknown as Platform)}
-					>
-						All
-					</MenuItem>
 					{data.map((platform) => (
 						<MenuItem
 							key={platform.id}
