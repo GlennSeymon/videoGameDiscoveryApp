@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import apiClient, { FetchResponse } from '../services/api-client';
+import { FetchResponse } from '../services/api-client';
 import { CACHE_KEY_PLATFORMS } from './constants';
 import platformService from '../services/platformService';
 
