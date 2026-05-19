@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import apiClient, { FetchResponse } from '../services/api-client';
 import { CACHE_KEY_PLATFORMS } from './constants';
+import platformService from '../services/platformService';
 
 export interface Platform {
 	id: number;
@@ -15,11 +16,9 @@ const usePlatforms = () =>
 	useQuery<FetchResponse<Platform>, AxiosError>({
 		queryKey: CACHE_KEY_PLATFORMS,
 		queryFn: () =>
-			apiClient
-				.get<FetchResponse<Platform>>('/platforms/lists/parents', {
-					params: { ordering: 'name' },
-				})
-				.then((res) => res.data),
+			platformService().getAll({
+				params: { ordering: 'name' },
+			}),
 		staleTime: 60 * 1000, // 60 sec
 	});
 
