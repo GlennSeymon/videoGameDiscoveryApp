@@ -48,7 +48,7 @@ const GenreList = ({ onClickGenre, selectedGenre }: Props) => {
 			<Typography variant='h6'>Genres</Typography>
 
 			<List>
-				{data.map((genre) => (
+				{data?.results.map((genre) => (
 					<StyledListItem key={genre.id}>
 						<StyledImage src={getCroppedImageUrl(genre.image_background)} />
 						<StyledLink
