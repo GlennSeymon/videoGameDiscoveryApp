@@ -1,8 +1,9 @@
-import { CACHE_KEY_GENRES } from './constants';
 import { useQuery } from '@tanstack/react-query';
-import { FetchResponse } from '../services/api-client';
 import { AxiosError } from 'axios';
+import ms from 'ms';
+import { FetchResponse } from '../services/api-client';
 import genreService from '../services/genreService';
+import { CACHE_KEY_GENRES } from './constants';
 
 export interface Genre {
 	id: number;
@@ -19,7 +20,7 @@ export const useGenres = () =>
 			genreService().getAll({
 				params: { ordering: 'name' },
 			}),
-		staleTime: 60 * 1000, // 60 sec
+		staleTime: ms('1d'),
 	});
 
 export default useGenres;
