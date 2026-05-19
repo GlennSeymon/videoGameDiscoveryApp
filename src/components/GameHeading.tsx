@@ -1,12 +1,23 @@
 import { styled, Typography } from '@mui/material';
 import { GameQuery } from '../App';
+import useGenres from '../hooks/useGenres';
+import usePlatforms from '../hooks/usePlatforms';
 
 interface Props {
 	gameQuery: GameQuery;
 }
 
 const getHeading = (gameQuery: GameQuery): string => {
-	return `${gameQuery.platform?.name || ''} ${gameQuery.genre?.name || ''}`;
+	const { data: genres } = useGenres();
+	const { data: platforms } = usePlatforms();
+	const genreName = genres?.results.find(
+		(genre) => genre.id === gameQuery.genreId,
+	)?.name;
+	const platformName = platforms?.results.find(
+		(platform) => platform.id === gameQuery.platformId,
+	)?.name;
+
+	return `${platformName || ''} ${genreName || ''}`;
 };
 
 const StyledHeading = styled(Typography)(({ theme }) => ({

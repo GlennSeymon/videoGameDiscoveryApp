@@ -34,10 +34,10 @@ const StyledLink = styled(Link, {
 
 interface Props {
 	onClickGenre: (genre: Genre) => void;
-	selectedGenre: Genre | null;
+	selectedGenreId?: number;
 }
 
-const GenreList = ({ onClickGenre, selectedGenre }: Props) => {
+const GenreList = ({ onClickGenre, selectedGenreId }: Props) => {
 	const { data, error, isLoading } = useGenres();
 
 	if (error) return <Alert severity='error'>{error.message}</Alert>;
@@ -53,7 +53,7 @@ const GenreList = ({ onClickGenre, selectedGenre }: Props) => {
 						<StyledImage src={getCroppedImageUrl(genre.image_background)} />
 						<StyledLink
 							onClick={() => onClickGenre(genre)}
-							isSelected={genre.id === selectedGenre?.id}
+							isSelected={genre.id === selectedGenreId}
 						>
 							{genre.name}
 						</StyledLink>

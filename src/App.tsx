@@ -11,8 +11,8 @@ import OrderingSelector from './components/OrderingSelector';
 import GameHeading from './components/GameHeading';
 
 export interface GameQuery {
-	genre: Genre | null;
-	platform: Platform | null;
+	genreId?: number;
+	platformId?: number;
 	ordering: string | null;
 	search: string | null;
 }
@@ -37,11 +37,11 @@ function App() {
 	const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
 	const handleGenreClick = (genre: Genre): void => {
-		setGameQuery({ ...gameQuery, genre });
+		setGameQuery({ ...gameQuery, genreId: genre.id });
 	};
 
 	const handlePlatformSelect = (platform: Platform | null): void => {
-		setGameQuery({ ...gameQuery, platform });
+		setGameQuery({ ...gameQuery, platformId: platform?.id });
 	};
 
 	const handleOrdering = (ordering: string): void => {
@@ -61,7 +61,7 @@ function App() {
 			<SidePanel size={{ md: 2 }}>
 				<GenreList
 					onClickGenre={(genre) => handleGenreClick(genre)}
-					selectedGenre={gameQuery.genre}
+					selectedGenreId={gameQuery.genreId}
 				/>
 			</SidePanel>
 
@@ -69,7 +69,7 @@ function App() {
 				<GameHeading gameQuery={gameQuery} />
 				<StyledStack direction='row' spacing={2}>
 					<PlatformSelector
-						selectedPlatform={gameQuery.platform}
+						selectedPlatformId={gameQuery.platformId}
 						onSelectPlatform={(platform) => handlePlatformSelect(platform)}
 					/>
 					<OrderingSelector
