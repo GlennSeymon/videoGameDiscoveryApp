@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { GameQuery } from '../App';
 import { FetchResponse } from '../services/api-client';
@@ -18,17 +18,21 @@ export interface Game {
 }
 
 const useGames = (gameQuery: GameQuery) =>
-	useQuery<FetchResponse<Game>, AxiosError>({
+	useInfiniteQuery<FetchResponse<Game>, AxiosError>({
 		queryKey: ['games', gameQuery],
-		queryFn: () =>
+		queryFn: ({ pageParam = 1 }) =>
 			gameService().getAll({
 				params: {
 					genres: gameQuery.genre?.id,
 					parent_platforms: gameQuery.platform?.id,
 					ordering: gameQuery.ordering,
 					search: gameQuery.search,
+					page: pageParam,
 				},
 			}),
+		getNextPageParam: (lastPage, allPages) => {
+			return lastPage.next ? allPages.length + 1 : undefined;
+		},
 		staleTime: 60 * 1000, // 60 sec
 	});
 
