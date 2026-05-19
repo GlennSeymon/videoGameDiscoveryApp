@@ -1,4 +1,5 @@
 import usePlatforms, { Platform } from '../hooks/usePlatforms';
+import { usePlatform } from '../hooks/usePlatform';
 import {
 	Alert,
 	CircularProgress,
@@ -15,9 +16,7 @@ interface Props {
 
 const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
 	const { data, error, isLoading } = usePlatforms();
-	const selectedPlatform = data?.results.find((platform) => {
-		platform.id === selectedPlatformId;
-	});
+	const selectedPlatform = usePlatform(selectedPlatformId);
 
 	if (error) return <Alert severity='error'>{error?.message}</Alert>;
 	if (isLoading) return <CircularProgress />;

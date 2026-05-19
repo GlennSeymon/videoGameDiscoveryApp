@@ -12,14 +12,14 @@ export interface Genre {
 	description: string;
 }
 
-const useGenres = () =>
+export const useGenres = () =>
 	useQuery<FetchResponse<Genre>, AxiosError>({
 		queryKey: CACHE_KEY_GENRES,
 		queryFn: () =>
 			genreService().getAll({
 				params: { ordering: 'name' },
 			}),
-
 		staleTime: 60 * 1000, // 60 sec
 	});
+
 export default useGenres;

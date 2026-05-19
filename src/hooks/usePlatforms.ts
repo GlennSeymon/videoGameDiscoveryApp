@@ -12,7 +12,7 @@ export interface Platform {
 	image: string;
 }
 
-const usePlatforms = () =>
+export const usePlatforms = () =>
 	useQuery<FetchResponse<Platform>, AxiosError>({
 		queryKey: CACHE_KEY_PLATFORMS,
 		queryFn: () =>
