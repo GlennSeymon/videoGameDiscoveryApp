@@ -1,4 +1,5 @@
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import useGameQueryStore from '../state-management/game-query/GameQueryStore';
 
 const OrderingTypes = [
 	{ value: '-added', label: 'Date added' },
@@ -8,23 +9,21 @@ const OrderingTypes = [
 	{ value: '-rating', label: 'Average Rating' },
 ];
 
-interface Props {
-	onClickOrdering: (ordering: string) => void;
-	selectedOrdering: string | null;
-}
+const OrderingSelector = () => {
+	const ordering = useGameQueryStore((s) => s.gameQuery.ordering);
+	const setOrdering = useGameQueryStore((s) => s.setOrdering);
 
-const OrderingSelector = ({ onClickOrdering, selectedOrdering }: Props) => {
 	return (
 		<FormControl sx={{ width: '30%' }}>
 			<InputLabel id='orderingTypeLabel'>Sort Type</InputLabel>
 			<Select
 				labelId='orderingTypeLabel'
 				label='Sort Type'
-				value={selectedOrdering ?? ''}
+				value={ordering ?? ''}
 			>
 				{OrderingTypes.map((orderingType) => (
 					<MenuItem
-						onClick={() => onClickOrdering(orderingType.value)}
+						onClick={() => setOrdering(orderingType.value)}
 						key={orderingType.value}
 						value={orderingType.value}
 					>

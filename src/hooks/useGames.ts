@@ -1,9 +1,9 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import ms from 'ms';
-import { GameQuery } from '../App';
 import { FetchResponse } from '../services/api-client';
 import gameService from '../services/gameService';
+import useGameQueryStore from '../state-management/game-query/GameQueryStore';
 import { Platform } from './usePlatforms';
 
 export interface Game {
@@ -18,8 +18,10 @@ export interface Game {
 	rating_top: number;
 }
 
-const useGames = (gameQuery: GameQuery) =>
-	useInfiniteQuery<FetchResponse<Game>, AxiosError>({
+const useGames = () => {
+	const gameQuery = useGameQueryStore((s) => s.gameQuery);
+
+	return useInfiniteQuery<FetchResponse<Game>, AxiosError>({
 		queryKey: ['games', gameQuery],
 		queryFn: ({ pageParam = 1 }) =>
 			gameService().getAll({
@@ -36,5 +38,5 @@ const useGames = (gameQuery: GameQuery) =>
 		},
 		staleTime: ms('1d'),
 	});
-
+};
 export default useGames;

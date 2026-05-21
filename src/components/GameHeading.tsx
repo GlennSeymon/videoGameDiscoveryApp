@@ -1,20 +1,20 @@
 import { styled, Typography } from '@mui/material';
-import { GameQuery } from '../App';
 import useGenres from '../hooks/useGenres';
 import usePlatforms from '../hooks/usePlatforms';
+import useGameQueryStore from '../state-management/game-query/GameQueryStore';
 
-interface Props {
-	gameQuery: GameQuery;
-}
+const getHeading = (): string => {
+	const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
+	const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
 
-const getHeading = (gameQuery: GameQuery): string => {
 	const { data: genres } = useGenres();
 	const { data: platforms } = usePlatforms();
+
 	const genreName = genres?.results.find(
-		(genre) => genre.id === gameQuery.genreId,
+		(genre) => genre.id === selectedGenreId,
 	)?.name;
 	const platformName = platforms?.results.find(
-		(platform) => platform.id === gameQuery.platformId,
+		(platform) => platform.id === selectedPlatformId,
 	)?.name;
 
 	return `${platformName || ''} ${genreName || ''}`;
@@ -24,10 +24,8 @@ const StyledHeading = styled(Typography)(({ theme }) => ({
 	marginBottom: theme.spacing(3),
 }));
 
-const GameHeading = ({ gameQuery }: Props) => {
-	return (
-		<StyledHeading variant='h1'>{getHeading(gameQuery)} Games</StyledHeading>
-	);
+const GameHeading = () => {
+	return <StyledHeading variant='h1'>{getHeading()} Games</StyledHeading>;
 };
 
 export default GameHeading;

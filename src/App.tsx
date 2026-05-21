@@ -1,21 +1,12 @@
-import './App.css';
 import { Grid, Stack, styled } from '@mui/material';
-import NavBar from './components/NavBar';
+import './App.css';
 import GameGrid from './components/GameGrid';
-import GenreList from './components/GenreList';
-import { Genre } from './hooks/useGenres';
-import { useState } from 'react';
-import PlatformSelector from './components/PlatformSelector';
-import { Platform } from './hooks/usePlatforms';
-import OrderingSelector from './components/OrderingSelector';
 import GameHeading from './components/GameHeading';
-
-export interface GameQuery {
-	genreId?: number;
-	platformId?: number;
-	ordering: string | null;
-	search: string | null;
-}
+import GenreList from './components/GenreList';
+import NavBar from './components/NavBar';
+import OrderingSelector from './components/OrderingSelector';
+import PlatformSelector from './components/PlatformSelector';
+import useGameQueryStore from './state-management/game-query/GameQueryStore';
 
 const SidePanel = styled(Grid)(({ theme }) => ({
 	display: 'none',
@@ -34,50 +25,23 @@ const StyledStack = styled(Stack)(({ theme }) => ({
 }));
 
 function App() {
-	const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
-	const handleGenreClick = (genre: Genre): void => {
-		setGameQuery({ ...gameQuery, genreId: genre.id });
-	};
-
-	const handlePlatformSelect = (platform: Platform | null): void => {
-		setGameQuery({ ...gameQuery, platformId: platform?.id });
-	};
-
-	const handleOrdering = (ordering: string): void => {
-		setGameQuery({ ...gameQuery, ordering });
-	};
-
-	const handleSearch = (search: string): void => {
-		setGameQuery({ ...gameQuery, search });
-	};
-
 	return (
 		<StyledGridContainer container spacing={0}>
 			<Grid size={{ xs: 12 }}>
-				<NavBar onSearch={handleSearch} />
+				<NavBar />
 			</Grid>
 
 			<SidePanel size={{ md: 2 }}>
-				<GenreList
-					onClickGenre={(genre) => handleGenreClick(genre)}
-					selectedGenreId={gameQuery.genreId}
-				/>
+				<GenreList />
 			</SidePanel>
 
 			<Grid size={{ xs: 12, sm: 10 }}>
-				<GameHeading gameQuery={gameQuery} />
+				<GameHeading />
 				<StyledStack direction='row' spacing={2}>
-					<PlatformSelector
-						selectedPlatformId={gameQuery.platformId}
-						onSelectPlatform={(platform) => handlePlatformSelect(platform)}
-					/>
-					<OrderingSelector
-						selectedOrdering={gameQuery.ordering}
-						onClickOrdering={(ordering) => handleOrdering(ordering)}
-					/>
+					<PlatformSelector />
+					<OrderingSelector />
 				</StyledStack>
-				<GameGrid gameQuery={gameQuery} />
+				<GameGrid />
 			</Grid>
 		</StyledGridContainer>
 	);

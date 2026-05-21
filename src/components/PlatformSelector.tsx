@@ -1,5 +1,3 @@
-import usePlatforms, { Platform } from '../hooks/usePlatforms';
-import { usePlatform } from '../hooks/usePlatform';
 import {
 	Alert,
 	CircularProgress,
@@ -8,15 +6,16 @@ import {
 	MenuItem,
 	Select,
 } from '@mui/material';
+import { usePlatform } from '../hooks/usePlatform';
+import usePlatforms from '../hooks/usePlatforms';
+import useGameQueryStore from '../state-management/game-query/GameQueryStore';
 
-interface Props {
-	onSelectPlatform: (platform: Platform | null) => void;
-	selectedPlatformId?: number;
-}
+const PlatformSelector = () => {
+	const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
+	const setPlatform = useGameQueryStore((s) => s.setPlatform);
 
-const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
-	const { data, error, isLoading } = usePlatforms();
 	const selectedPlatform = usePlatform(selectedPlatformId);
+	const { data, error, isLoading } = usePlatforms();
 
 	if (error) return <Alert severity='error'>{error?.message}</Alert>;
 	if (isLoading) return <CircularProgress />;
@@ -29,7 +28,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
 					<MenuItem
 						key={platform.id}
 						value={platform.id}
-						onClick={() => onSelectPlatform(platform)}
+						onClick={() => setPlatform(platform.id)}
 					>
 						{platform.name}
 					</MenuItem>

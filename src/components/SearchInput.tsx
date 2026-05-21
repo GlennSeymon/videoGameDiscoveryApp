@@ -2,23 +2,21 @@ import { InputAdornment, styled, TextField } from '@mui/material';
 import React from 'react';
 import { useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
-
-interface Props {
-	onSearch: (searchText: string) => void;
-}
+import useGameQueryStore from '../state-management/game-query/GameQueryStore';
 
 const StyledForm = styled('form')({
 	width: '100%',
 });
 
-const SearchInput = ({ onSearch }: Props) => {
+const SearchInput = () => {
+	const setSearch = useGameQueryStore((s) => s.setSearch);
 	const [searchValue, setSearchValue] = useState('');
 
 	const handleSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
 		if (!searchValue.trim()) return;
 
-		onSearch(searchValue);
+		setSearch(searchValue);
 	};
 
 	return (

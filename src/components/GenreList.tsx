@@ -7,8 +7,9 @@ import {
 	styled,
 	Typography,
 } from '@mui/material';
-import useGenres, { Genre } from '../hooks/useGenres';
+import useGenres from '../hooks/useGenres';
 import getCroppedImageUrl from '../services/image-url';
+import useGameQueryStore from '../state-management/game-query/GameQueryStore';
 
 const StyledImage = styled('img')(({ theme }) => ({
 	height: '32px',
@@ -32,12 +33,10 @@ const StyledLink = styled(Link, {
 	fontWeight: isSelected ? 'bold' : 'normal',
 }));
 
-interface Props {
-	onClickGenre: (genre: Genre) => void;
-	selectedGenreId?: number;
-}
+const GenreList = () => {
+	const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
+	const setGenre = useGameQueryStore((s) => s.setGenre);
 
-const GenreList = ({ onClickGenre, selectedGenreId }: Props) => {
 	const { data, error, isLoading } = useGenres();
 
 	if (error) return <Alert severity='error'>{error.message}</Alert>;
@@ -52,8 +51,8 @@ const GenreList = ({ onClickGenre, selectedGenreId }: Props) => {
 					<StyledListItem key={genre.id}>
 						<StyledImage src={getCroppedImageUrl(genre.image_background)} />
 						<StyledLink
-							onClick={() => onClickGenre(genre)}
 							isSelected={genre.id === selectedGenreId}
+							onClick={() => setGenre(genre.id)}
 						>
 							{genre.name}
 						</StyledLink>
