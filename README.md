@@ -2,25 +2,28 @@
 
 A demo web application that helps users discover new video games based on their preferences, genres, and ratings. Built with modern web technologies for an intuitive and engaging experience.
 
+This project was developed as part of the Code With Mosh Ultimate React course series, extended with additional features including MUI theming, infinite scrolling, and Zustand state management.
+
 ## Features
 
-- Search for games by title, genre, or platform.
-- Sort games.
-- View detailed game information including ratings, rating icon and availble platforms.
-- Responsive design for desktop and mobile devices using MUI.
-- Dark/Light mode theme.
-- Dynamic data and images using API from https://rawg.io/
-- Infinite scrolling.
-- State management using Zustand.
+- Search for games by title, genre, or platform
+- Sort games by relevance, rating, and other criteria
+- View detailed game information including ratings, rating icons, and available platforms
+- Responsive design for desktop and mobile devices using MUI
+- Dark/Light mode theme
+- Dynamic data and images via the [RAWG API](https://rawg.io/)
+- Infinite scrolling
+- State management using Zustand
 
 ## Technologies Used
 
 - React
+- TypeScript
 - Node.js
-- MUI
+- Material UI (MUI)
+- Zustand (state management)
+- React Query / TanStack Query (server state and caching)
 - RAWG API
-- React Query (Tanstack Query)
-- Zustand
 
 ## Installation
 
@@ -38,17 +41,23 @@ A demo web application that helps users discover new video games based on their 
    ```
 
 3. Set up environment variables:
-   - Add your RAWG API key to src\services\api-client.ts
+   - Add your RAWG API key to `src/services/api-client.ts`
+   - A free API key is available at [rawg.io/apidocs](https://rawg.io/apidocs)
 
 4. Run the application:
+
    ```bash
    npm run dev
    ```
 
+5. Open your browser and navigate to `http://localhost:5173`
+
 ## Usage
 
-- Open the app in your browser
-- Use the search bar to find games
+- Use the search bar to find games by title
+- Filter by genre using the left sidebar
+- Filter by platform using the top navigation
+- Toggle between dark and light mode using the theme switch
 
 ## License
 
