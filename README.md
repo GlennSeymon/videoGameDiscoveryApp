@@ -2,7 +2,7 @@
 
 A demo web application that helps users discover new video games based on their preferences, genres, and ratings. Built with modern web technologies for an intuitive and engaging experience.
 
-This project was developed as part of the Code With Mosh Ultimate React course series, extended with additional features including MUI theming, infinite scrolling, and Zustand state management.
+This project was developed as part of the Code With Mosh Ultimate React course series, extended with additional features including MUI theming.
 
 ## Features
 
