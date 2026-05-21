@@ -4,12 +4,14 @@ A demo web application that helps users discover new video games based on their 
 
 ## Features
 
-- Search for games by title, genre, or platform
-- Sort games
+- Search for games by title, genre, or platform.
+- Sort games.
 - View detailed game information including ratings, rating icon and availble platforms.
-- Responsive design for desktop and mobile devices using MUI
-- Dark/Light mode theme
+- Responsive design for desktop and mobile devices using MUI.
+- Dark/Light mode theme.
 - Dynamic data and images using API from https://rawg.io/
+- Infinite scrolling.
+- State management using Zustand.
 
 ## Technologies Used
 
@@ -17,6 +19,8 @@ A demo web application that helps users discover new video games based on their 
 - Node.js
 - MUI
 - RAWG API
+- React Query (Tanstack Query)
+- Zustand
 
 ## Installation
 
