@@ -11,6 +11,7 @@ export interface Game {
 	slug: string;
 	name: string;
 	description: string;
+	description_raw: string;
 	rating: number;
 	background_image: string;
 	parent_platforms: { platform: Platform }[];

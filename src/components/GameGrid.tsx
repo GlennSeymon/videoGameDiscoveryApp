@@ -12,7 +12,7 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
 const GameCardGrid = styled(Grid)(({ theme }) => ({
 	'&:hover': {
 		transform: 'scale(1.05)',
-		'box-shadow': '0 0 20px rgba(0, 255, 255, 0.5)',
+		boxShadow: '0 0 20px rgba(0, 255, 255, 0.5)',
 	},
 	transition: 'all 0.5s ease',
 	borderRadius: theme.spacing(2),
