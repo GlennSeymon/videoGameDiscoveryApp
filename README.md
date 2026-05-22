@@ -13,16 +13,19 @@ This project was developed as part of the Code With Mosh Ultimate React course s
 - Dark/Light mode theme
 - Dynamic data and images via the [RAWG API](https://rawg.io/)
 - Infinite scrolling
-- State management using Zustand
+- Axios for HTTP API requsts
+- React Query for back-end data state/cache management
+- React state management using Zustand
 
 ## Technologies Used
 
 - React
 - TypeScript
-- Node.js
 - Material UI (MUI)
+- Node.js
 - Zustand (state management)
-- React Query / TanStack Query (server state and caching)
+- React Query / TanStack Query
+- React Router
 - RAWG API
 
 ## Installation
