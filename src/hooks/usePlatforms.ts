@@ -4,14 +4,7 @@ import ms from 'ms';
 import { FetchResponse } from '../services/api-client';
 import platformService from '../services/platformService';
 import { CACHE_KEY_PLATFORMS } from './constants';
-
-export interface Platform {
-	id: number;
-	name: string;
-	slug: string;
-	image_background: string;
-	image: string;
-}
+import { Platform } from '../entities/Platform';
 
 export const usePlatforms = () =>
 	useQuery<FetchResponse<Platform>, AxiosError>({

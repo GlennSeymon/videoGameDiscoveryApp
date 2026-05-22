@@ -4,20 +4,7 @@ import ms from 'ms';
 import { FetchResponse } from '../services/api-client';
 import gameService from '../services/gameService';
 import useGameQueryStore from '../state-management/game-query/GameQueryStore';
-import { Platform } from './usePlatforms';
-
-export interface Game {
-	id: number;
-	slug: string;
-	name: string;
-	description: string;
-	description_raw: string;
-	rating: number;
-	background_image: string;
-	parent_platforms: { platform: Platform }[];
-	metacritic: number;
-	rating_top: number;
-}
+import { Game } from '../entities/Game';
 
 const useGames = () => {
 	const gameQuery = useGameQueryStore((s) => s.gameQuery);

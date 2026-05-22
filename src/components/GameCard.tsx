@@ -1,4 +1,4 @@
-import { Game } from '../hooks/useGames';
+import { Game } from '../entities/Game';
 import { Box, CardMedia, Stack, styled, Typography } from '@mui/material';
 import PlatformIconList from './PlatformIconList';
 import CriticScore from './CriticScore';

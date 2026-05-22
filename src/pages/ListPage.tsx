@@ -26,10 +26,6 @@ const StyledStack = styled(Stack)(({ theme }) => ({
 const ListPage = () => {
 	return (
 		<StyledGridContainer container spacing={0}>
-			<Grid size={{ xs: 12 }}>
-				<NavBar />
-			</Grid>
-
 			<SidePanel size={{ md: 2 }}>
 				<GenreList />
 			</SidePanel>
