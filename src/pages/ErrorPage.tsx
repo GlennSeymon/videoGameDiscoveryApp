@@ -1,3 +1,4 @@
+import { Alert, Typography } from '@mui/material';
 import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
 
 const ErrorPage = () => {
@@ -5,10 +6,9 @@ const ErrorPage = () => {
 
 	return (
 		<>
-			<h1>Oops...</h1>
+			<Alert color='error'>Oops...</Alert>
 			<p>Sorry, an unexpected error has occurred.</p>
-			<p>{isRouteErrorResponse(error) ? error.data : 'Unknown error'}</p>
-			<p>Sorry, an unexpected error has occurred. Again</p>
+			<p>{isRouteErrorResponse(error) ? error.data : ''}</p>
 		</>
 	);
 };

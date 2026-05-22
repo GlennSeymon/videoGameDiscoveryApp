@@ -6,9 +6,10 @@ import PlatformSelector from '../components/PlatformSelector';
 import GenreList from '../components/GenreList';
 import NavBar from '../components/NavBar';
 
-const StyledGridContainer = styled(Grid)({
+const StyledGridContainer = styled(Grid)(({ theme }) => ({
 	textAlign: 'left',
-});
+	marginTop: theme.spacing(1),
+}));
 
 const SidePanel = styled(Grid)(({ theme }) => ({
 	display: 'none',
