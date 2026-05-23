@@ -1,6 +1,7 @@
 import { Box, CircularProgress, styled, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import useGame from '../hooks/useGame';
+import TextExpander from '../components/TextExpander';
 
 const StyledBox = styled(Box)(({ theme }) => ({
 	padding: theme.spacing(2),
@@ -11,14 +12,12 @@ const DetailPage = () => {
 	const { data: game, isLoading, error } = useGame(params.slug!);
 
 	// if (error || !game) throw error;
+	if (isLoading) return <CircularProgress />;
 
 	return (
 		<StyledBox>
-			{isLoading && <CircularProgress />}
-
-			<Typography variant='h1'>DetailPage</Typography>
-			<Typography>Name: {game?.name}</Typography>
-			<Typography>Description RAW: {game?.description_raw}</Typography>
+			<Typography variant='h1'>{game?.name}</Typography>
+			<TextExpander minChars={100}>{game?.description_raw}</TextExpander>
 			<Typography>Rating: {game?.rating}</Typography>
 			<Typography>Metacritic: {game?.metacritic}</Typography>
 		</StyledBox>
