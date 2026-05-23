@@ -1,7 +1,10 @@
-import { Box, CircularProgress, styled, Typography } from '@mui/material';
+import { Box, CircularProgress, Grid, styled, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import useGame from '../hooks/useGame';
 import TextExpander from '../components/TextExpander';
+import GridDefinitionItem from '../components/GridDefinitionItem';
+import CriticScore from '../components/CriticScore';
+import GameAttributes from '../components/GameAttributes';
 
 const StyledBox = styled(Box)(({ theme }) => ({
 	padding: theme.spacing(2),
@@ -18,8 +21,7 @@ const DetailPage = () => {
 		<StyledBox>
 			<Typography variant='h1'>{game?.name}</Typography>
 			<TextExpander minChars={100}>{game?.description_raw}</TextExpander>
-			<Typography>Rating: {game?.rating}</Typography>
-			<Typography>Metacritic: {game?.metacritic}</Typography>
+			{game && <GameAttributes game={game} />}
 		</StyledBox>
 	);
 };
