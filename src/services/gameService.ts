@@ -1,5 +1,5 @@
-import APIClient from './api-client';
 import { Game } from '../entities/Game';
+import APIClient from './api-client';
 
 const gameService = () => {
 	return new APIClient<Game>('/games');
