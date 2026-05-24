@@ -11,6 +11,7 @@ This project was developed as part of the Code With Mosh Ultimate React course s
 - View detailed game information including ratings, rating icons, and available platforms
 - Responsive design for desktop and mobile devices using MUI
 - Dark/Light mode theme
+- Detail page showing more description, platforms available, metascore, genres, publishers and video trailer if available
 - Dynamic data and images via the [RAWG API](https://rawg.io/)
 - Infinite scrolling
 - Axios for HTTP API requsts
