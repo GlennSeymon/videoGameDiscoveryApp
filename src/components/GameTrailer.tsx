@@ -5,7 +5,7 @@ interface Props {
 	gameId: number;
 }
 
-const Trailer = ({ gameId }: Props) => {
+const GameTrailer = ({ gameId }: Props) => {
 	const { data: trailer, isLoading, error } = useTrailer(gameId);
 
 	if (isLoading) return <CircularProgress />;
@@ -27,4 +27,4 @@ const Trailer = ({ gameId }: Props) => {
 	);
 };
 
-export default Trailer;
+export default GameTrailer;

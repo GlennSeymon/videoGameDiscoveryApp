@@ -1,30 +1,30 @@
-import { Box, CircularProgress, styled, Typography } from '@mui/material';
+import { CircularProgress, Grid, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import GameAttributes from '../components/GameAttributes';
-import TextExpander from '../components/TextExpander';
-import Trailer from '../components/Trailer';
-import useGame from '../hooks/useGame';
 import GameScreenshot from '../components/GameScreenshot';
-
-const StyledBox = styled(Box)(({ theme }) => ({
-	padding: theme.spacing(2),
-}));
+import TextExpander from '../components/TextExpander';
+import GameTrailer from '../components/GameTrailer';
+import useGame from '../hooks/useGame';
 
 const DetailPage = () => {
 	const params = useParams();
-	const { data: game, isLoading, error } = useGame(params.slug!);
+	const { data: game, isLoading } = useGame(params.slug!);
 
 	// if (errorGame || !game) throw error;
 	if (isLoading) return <CircularProgress />;
 
 	return (
-		<StyledBox>
-			<Typography variant='h1'>{game?.name}</Typography>
-			<TextExpander minChars={100}>{game?.description_raw}</TextExpander>
-			{game && <GameAttributes game={game} />}
-			{game && <Trailer gameId={game.id} />}
-			{game && <GameScreenshot gameId={game.id} />}
-		</StyledBox>
+		<Grid container spacing={2}>
+			<Grid size={{ xs: 12, sm: 6 }}>
+				<Typography variant='h1'>{game?.name}</Typography>
+				<TextExpander minChars={100}>{game?.description_raw}</TextExpander>
+				{game && <GameAttributes game={game} />}
+			</Grid>
+			<Grid size={{ xs: 12, sm: 6 }}>
+				{game && <GameTrailer gameId={game.id} />}
+				{game && <GameScreenshot gameId={game.id} />}
+			</Grid>
+		</Grid>
 	);
 };
 
