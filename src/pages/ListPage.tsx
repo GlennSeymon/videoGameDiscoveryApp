@@ -1,10 +1,9 @@
 import { Grid, Stack, styled } from '@mui/material';
 import GameGrid from '../components/GameGrid';
 import GameHeading from '../components/GameHeading';
+import GenreList from '../components/GenreList';
 import OrderingSelector from '../components/OrderingSelector';
 import PlatformSelector from '../components/PlatformSelector';
-import GenreList from '../components/GenreList';
-import NavBar from '../components/NavBar';
 
 const StyledGridContainer = styled(Grid)(({ theme }) => ({
 	textAlign: 'left',

@@ -4,6 +4,7 @@ import GameAttributes from '../components/GameAttributes';
 import TextExpander from '../components/TextExpander';
 import Trailer from '../components/Trailer';
 import useGame from '../hooks/useGame';
+import GameScreenshot from '../components/GameScreenshot';
 
 const StyledBox = styled(Box)(({ theme }) => ({
 	padding: theme.spacing(2),
@@ -22,6 +23,7 @@ const DetailPage = () => {
 			<TextExpander minChars={100}>{game?.description_raw}</TextExpander>
 			{game && <GameAttributes game={game} />}
 			{game && <Trailer gameId={game.id} />}
+			{game && <GameScreenshot gameId={game.id} />}
 		</StyledBox>
 	);
 };
