@@ -1,8 +1,8 @@
 import { Stack, styled } from '@mui/material';
+import { Link } from 'react-router-dom';
+import logo from '../assets/logo.webp';
 import ColourModeSwitch from './ColourModeSwitch';
 import SearchInput from './SearchInput';
-import logo from '../assets/logo.webp';
-import { Link } from 'react-router-dom';
 
 const Logo = styled('img')({
 	height: '60px',

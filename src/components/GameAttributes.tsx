@@ -1,5 +1,5 @@
 import { Grid, Typography } from '@mui/material';
-import { Game } from '../entities/Game';
+import Game from '../entities/Game';
 import CriticScore from './CriticScore';
 import GridDefinitionItem from './GridDefinitionItem';
 

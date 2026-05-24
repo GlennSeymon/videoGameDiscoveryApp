@@ -1,4 +1,4 @@
-import { Trailer } from '../entities/Trailer';
+import Trailer from '../entities/Trailer';
 import APIClient from './api-client';
 
 const trailerService = (gameId: number) => {

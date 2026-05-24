@@ -1,11 +1,11 @@
-import { Game } from '../entities/Game';
 import { Box, CardMedia, Stack, styled, Typography } from '@mui/material';
-import PlatformIconList from './PlatformIconList';
-import CriticScore from './CriticScore';
-import getCroppedImageUrl from '../services/image-url';
-import GameCardContainer from './GameCardContainer';
-import EmojiRating from './EmojiRating';
 import { Link } from 'react-router-dom';
+import Game from '../entities/Game';
+import getCroppedImageUrl from '../services/image-url';
+import CriticScore from './CriticScore';
+import EmojiRating from './EmojiRating';
+import GameCardContainer from './GameCardContainer';
+import PlatformIconList from './PlatformIconList';
 
 interface Props {
 	game: Game;
